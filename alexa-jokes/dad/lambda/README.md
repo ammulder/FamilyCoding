@@ -1,28 +1,28 @@
 # Setup
 
 ## Local Machine Setup
-1. Run Terminal for many of the rest of these commands
+1. To run Terminal, which you'll need for many of the rest of these commands:
     1. Hit Command-Space and start typing `Terminal` and click `Terminal` when you see it in the list (or you can hit Enter if it's the first entry)
-    1. When it opens a Terminal window, you can type `echo "Hello!"` and then Enter to make sure it's working
+    1. When it opens a Terminal window, you can type `echo "Hello"` and then Enter to make sure it's working
     1. As a side note, one of the original developer operating systems was UNIX.  One of the original command-line interfaces on UNIX was the Bourne shell.  (The "shell" is the thing that handles your typed commands in Terminal.)  When someone later decided to make a better shell than the Bourne shell, they called it the Bourne Again SHell, or BASH.  Which is why you may see "bash" from time to time in Terminal.  The most comparable thing on Windows is PowerShell.
-1. Set up the source control tool Git:
+1. To set up the source control tool Git:
     1. Run `git` from Terminal -- if it prompts to install the developer tools, then do it
     1. Run `git config --global user.name "John Doe"` but with your real name instead of John Doe
     1. Run `git config --global user.email johndoe@example.com` but with your real e-mail instead of that example one.  Make sure you remember whether you use dots in the e-mail address or not.
     1. Run `git config --global core.autocrlf input` to configure line endings (Windows and Mac/Linux use different characters to indicate the end of a line)
-    1. Run `git config --global core.editor "emacs"` (You will curse me now, but thank me later.  At least half of that statement is true.)
-1. Set up a source control account on GitHub (the cloud side of Git that we'll use)
+    1. Run `git config --global core.editor "emacs"` (You may find the commands for Emacs to be obscure now, but you'll thank me later.  *At least half of that statement is true.*)
+1. To set up a source control account on GitHub (the cloud side of Git that we'll use):
     1. Go to GitHub.com in your browser
     1. On the front page on the right side, you can create an account.  Put in a username that's not too arrogant or offensive (it is going to be public), the EXACT SAME e-mail address you set for Git above, and a good-quality password, then hit `Sign up for GitHub`
     1. I don't want to sign up for a fake account just to see the rest of this process, so I'll document it when the first one of you goes through it. 
-1. Install the code editor Visual Studio Code:
+1. To install the code editor Visual Studio Code:
     1. Google for VSCode
     1. Click the `Download for Mac` button
     1. Double-click the file it downloaded (you can use Finder and look in the `Downloads` directory on the left).  It should open a new Finder window 
     1. Move the app that it created to the `Applications` directory (you will need to enter an administrator password)
     1. Hit Command-Space and start typing `Visual` and click `Visual Studio Code` when you see it in the list (or you can hit Enter if it's the first entry)
         * If it asks whether you want to open it because it was downloaded from the Internet, hit `Open`
-1. Install NVM to download and manage your versions of Node to run JavaScript apps on your machine
+1. To install NVM to download and manage your versions of Node to run JavaScript apps on your machine:
     1. If Terminal is running but isn't showing, hold down `Command` and hit `Tab` (keep holding Command the whole time).  It will show icons for every app you have open.  Each time you hit `Tab` the highlight will move over to the next app in the list.  When it's on Terminal, let go of the keys and Terminal should pop to the front.
     1. Run `ls ~/.bash*` from Terminal.  If you don't see `.bash_profile` or `.bashrc` then run `touch .bash_profile` from Terminal
     1. Google for NVM
@@ -30,12 +30,14 @@
     1. Copy and paste the install command on the NVM page into Terminal and then hit Enter to install NVM
     1. Still in Terminal, hit `Command-N` to open a new Terminal window so it will see NVM.  (You can close the old Terminal window.)
     1. Run `nvm install lts/carbon` from the new terminal window
-1. Install Homebrew (must be done as administrator), which will let you install additional software
+1. To install Homebrew (must be done as administrator), which will let you install additional software:
     1. Google for Homebrew (all one word)
     1. Go to the result for the Mac package manager (not an alcoholic beverage), and copy and paste the install command there into a Terminal window to start the install
-    1. Remember, that must be done as an administrator.  If it doesn't work, get an administrator to open their account and do it for you.
+        * Remember, that must be done as an administrator.  If it doesn't work, get an administrator to open their account and do it for you.
+    1.  The Homebrew install may take some time
 1. Install the AWS Command-Line Interface (CLI) that you'll use for your machine to control stuff in AWS
     1. Run `brew install awscli` from Terminal.  This will install the AWS CLI tool using Homebrew, which is a million times easier than trying to sort out the PIP/Python procedure they provide on the official installation page (given the oddball versions of Python on macOS)
+        * This may take some time, especially if you're on an older version of macOS
     1. Run `aws` from Terminal and make sure it doesn't complain that the command wasn't found
 
 ## AWS Account Setup
@@ -106,7 +108,7 @@
 
 ## First Lambda
 1. Go to Visual Studio Code (or open it if it's not running)
-1. Open the project
+1. Open the project:
     1. Hit `Open folder...` in blue text
     1. Select your username from the "Favorites" list on the left
     1. Navigate to `dev/family/alexa-jokes/yourname` and when the directory with your name is highlighted in blue, hit `Open`
@@ -125,23 +127,48 @@
         1. Scroll down if needed until you see `Files: Auto Save` set to `off`
         1. Change it to `onWindowChange`.  That means you can save by hand, but also if you switch from the VSCode window to a Terminal window, any unsaved files will be saved automatically.  Whew!
     1. Right now we just want to see this run.  We'll look through it in more detail and start making changes later.
-1. Prepare to send the Lambda code to AWS to run there
+1. Prepare to send the Lambda code to AWS to run there:
     1. Like we just did, copy the content of `lambda-config.js` under `samples` into the file `lambda-config.js` in the `lambda` directory.  
-1. TODO: MAKE THE REST OF THIS A LITTLE MORE EXPLICIT
-1. Go to AWS Console / IAM / Roles / admin role you created, copy ARN
-1. Paste role ARN into lambda-config.js
-1. Run `gulp lambda:deploy`
-1. Go to AWS Console / Lambda / Functions and click the name of the function as configured in lambda-config.js
-1. Under "Add triggers" click `Alexa Skills Kit`
-1. Under "Configure triggers" and "Skill ID verification", click `Disable`
-1. Click `Add`
-1. Click `Save` at the top right
-1. Hit `Command-R` to reload the page
-1. In the top "Designer" box, you should see a box for "Alexa Skills Kit"
-1. On the top next to "Text" click `Select a test event...` then `Configure test events`
-1. Under "Event template" select `Amazon Alexa Start Session`.  You can type "Alexa" into the search box if it helps to narrow down the list to find that one.
-1. Under "Event name" enter `AlexaStart` or `AlexaStartSession` (it doesn't allow spaces)
-1. Hit `Create`
-1. Hit the `Test` button near the top right
-1. Click `Details` in the green box.  You should see output including `<speak>Hi there.  Ask me to tell a joke!\</speak>`  That shows that the Lambda itself is working, though it's not yet connected to Alexa.
+    1. In your browser window, Go to the AWS console.  If you don't have it up any more, Google for `AWS Console`, go there, and hit `Sign in to the console` or the text `Or sign in to the console`
+    1. Go to IAM in the console.  If you're somewhere else, you can usually use the `Services` link in the top bar and type `iam` on the screen that comes up and click the link it offers to IAM.
+    1. Hit Roles on the left.
+    1. Click the link for the name of the Role you created earlier.  This should be something like `AlexaLambda`
+    1. Copy the value for "Role ARN".  You can do this by clicking the icon for two pieces of paper, to the right of the ARN value (it should briefly say "Copied" when you do that).
+    1. Go back to VSCode and the `lambda-config.js` file.  Paste the Role ARN in place of the value to the right of `role:`.  Make sure that there are single quotes around the Role ARN and a comma after the last quote after you paste the Role ARN in -- so either replace just the part inside the quotes, or replace the whole right side and then put the quotes and comma back.  It should look like this with a bunch of stuff in the middle in place of the "...":
+    ```
+      role: 'arn:aws:iam ... /AlexaLambda',
+    ```
+    1. As configured, your Lambda will be named "AlexaJokes". If you'd like something different, change the value for the `functionName` in that same file.  To make sure you don't use an invalid function name, use only letters and numbers in the name for now.  Make sure it ends up with single quotes around the name.  This time it doesn't need a comma at the end, because it is the last entry in the list.
+1. Upload the Lambda!
+    1. Run `gulp lambda:build` again, just to make sure everything is still working
+    1. Run `gulp lambda:deploy` to send the code up to AWS.  Make sure you don't see anything that says "Error" in the output.
+1. Configure and test the Lambda function:
+    1. Go back to the AWS console.  Go to the "Lambda" area.  Remember, you can hit `Services` at the top, then start typing "lambda", and click `Lambda` when it suggests it to you
+    1. When you get to Lambda, you want to be in `Functions` on the left.  If that's not already highlighted, click it.
+    1. On the right, you should see the name of the function you configured in `lambda-config.js` -- which was `AlexaLambda` by default, but you may have changed it.  Click that Lambda name.
+    1. In the `Designer` box under `Add triggers` click `Alexa Skills Kit`
+    1. Under "Configure triggers" and "Skill ID verification", click `Disable`
+    1. Click `Add`
+    1. Click `Save` at the top right
+    1. Hit `Command-R` to reload the page
+    1. In the top "Designer" box, you should see a box for "Alexa Skills Kit"
+    1. On the top next to "Text" click `Select a test event...` then `Configure test events`
+    1. Under "Event template" select `Amazon Alexa Start Session`.  You can type "Alexa" into the search box if it helps to narrow down the list to find that one.
+    1. Under "Event name" enter `AlexaStart` or `AlexaStartSession` (it doesn't allow spaces)
+    1. Hit `Create`
+    1. Hit the `Test` button near the top right
+    1. Click `Details` in the green box.  You should see output including `<speak>Hi there.  Ask me to tell a joke!\</speak>`  That shows that the Lambda itself is working, though it's not yet connected to Alexa.
 
+## Set up Alexa
+
+1. First, create an Amazon developer account (for reasons unknown, this is separate from your AWS account that we created before):
+    1. In your browser, go to http://developer.amazon.com/
+    1. Click `Sign In` on the top right
+    1. If you already have a regular Amazon account, try signing in with that.  If you don't, click `Create your Amazon Developer account`
+    1. For new accounts, enter your name, e-mail address, and a good password.  For convenience, it may be best to use the same e-mail address you used for your AWS account (including any dots in the name).  It is not required, though.  Then hit `Continue`.
+    1. *Since I already have an account, I need to document this when one of you goes through it.*  Complete the rest of the Amazon Developer account setup, and if you're not signed in when that's done, sign in like above
+1. Next, create an Alexa skill (TODO)
+1. Configure the Alexa skill using the sample content in samples/ (TODO)
+1. Point the Alexa skill to your Lambda (TODO)
+1. Test the Alexa skill from the Alexa console (TODO)
+1. If you have an Echo or other Alexa device, invite the Amazon
