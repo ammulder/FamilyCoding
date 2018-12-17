@@ -18,14 +18,17 @@
 1. Install the code editor Visual Studio Code:
     1. Google for VSCode
     1. Click the `Download for Mac` button
-    1. Double-click the file it downloaded
+    1. Double-click the file it downloaded (you can use Finder and look in the `Downloads` directory on the left).  It should open a new Finder window 
     1. Move the app that it created to the `Applications` directory (you will need to enter an administrator password)
     1. Hit Command-Space and start typing `Visual` and click `Visual Studio Code` when you see it in the list (or you can hit Enter if it's the first entry)
+        * If it asks whether you want to open it because it was downloaded from the Internet, hit `Open`
 1. Install NVM to download and manage your versions of Node to run JavaScript apps on your machine
+    1. If Terminal is running but isn't showing, hold down `Command` and hit `Tab` (keep holding Command the whole time).  It will show icons for every app you have open.  Each time you hit `Tab` the highlight will move over to the next app in the list.  When it's on Terminal, let go of the keys and Terminal should pop to the front.
     1. Run `ls ~/.bash*` from Terminal.  If you don't see `.bash_profile` or `.bashrc` then run `touch .bash_profile` from Terminal
     1. Google for NVM
-    1. Copy and paste the install command on the NVM page into Terminal to install NVM
-    1. Hit `Command-N` to open a new Terminal window so it will see NVM.  (You can close the old Terminal window.)
+    1. On the main NVM page, scroll down past the file listing until you get to the installaltion instructions
+    1. Copy and paste the install command on the NVM page into Terminal and then hit Enter to install NVM
+    1. Still in Terminal, hit `Command-N` to open a new Terminal window so it will see NVM.  (You can close the old Terminal window.)
     1. Run `nvm install lts/carbon` from the new terminal window
 1. Install Homebrew (must be done as administrator), which will let you install additional software
     1. Google for Homebrew (all one word)
