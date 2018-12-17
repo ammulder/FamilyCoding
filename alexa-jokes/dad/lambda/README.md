@@ -100,3 +100,45 @@
     1. Now that your local changes are saved, try sending them up to the cloud with `git push`.  If that complains that the cloud has changes you haven't downloaded yet, run `git pull`.  Git pull brings down any pending changes.  It may bring up Emacs with a message pre-entered like `Merge changes ...` and you can just hit `Ctrl-X Ctrl-C y` to save and exit.  That's really a "commit" adding the updates from the cloud into your local repository.
     1. If you had to run a `git pull` first, then run `git push` again to make sure you have the code sent up.
     1. To double-check, look in your Web browser at https://github.com/ammulder/FamilyCoding/tree/master/alexa-jokes and then click the link with your name and see if the five new files are there.
+
+## First Lambda
+1. Go to Visual Studio Code (or open it if it's not running)
+1. Open the project
+    1. Hit `Open folder...` in blue text
+    1. Select your username from the "Favorites" list on the left
+    1. Navigate to `dev/family/alexa-jokes/yourname` and when the directory with your name is highlighted in blue, hit `Open`
+1. Set up the first plain version of a working Alexa Lambda handler:
+    1. Open the `lambda` directory on the left (click it to show or hide its contents), and double-click `index.ts` to open in in an editor window on the right.
+        * NOTE: If the file name in the tab above the edit area is in italics, you only single-clicked so you're only previewing it.  Double-click the name on the left so the file name in the tab is in regular text.
+    1. You should see a file with about 9 lines of code.  It's a default Lambda handler, which is not useful to us because it doesn't work with Alexa.
+    1. Open the `samples` directory on the left and click the `lambda-index.ts` file to open it on the right.  Click anywhere in it.
+    1. Hit `Command-A` to "select all", then `Command-C` to copy all that text
+    1. Click the tab labeled `index.ts` above the edit area to select that file.  Hit `Command-A` to select all the existing (bad) code, and `Command-V` to paste in the good code.
+    1. You should see that the tab for `index.ts` above the edit area now has a little dot in it.  That indicates that the code HAS NOT BEEN SAVED.  Likewise, if you look at the top left of the VSCode window, you should see a `1` in a blue circle over the top of an icon with a couple papers.  That indicates that you have 1 UNSAVED FILE in your project.  Why am I making a big deal of this?  When you run Terminal commands, they WILL NOT SEE UNSAVED CODE.  This is bad, and it will drive you crazy that your code seems to be not working when you send it to AWS, and then you later discover that it was never saved.
+    1. Hit `Command-S` to save the code.
+    1. In fact, let's fix that right now:
+        1. Go to the menu bar all the way at the top of your screen, and select `Code / Preferences / Settings`
+        1. In the "Search Settings" box type `Save`
+        1. Scroll down if needed until you see `Files: Auto Save` set to `off`
+        1. Change it to `onWindowChange`.  That means you can save by hand, but also if you switch from the VSCode window to a Terminal window, any unsaved files will be saved automatically.  Whew!
+    1. Right now we just want to see this run.  We'll look through it in more detail and start making changes later.
+1. Prepare to send the Lambda code to AWS to run there
+    1. Like we just did, copy the content of `lambda-config.js` under `samples` into the file `lambda-config.js` in the `lambda` directory.  
+1. TODO: MAKE THE REST OF THIS A LITTLE MORE EXPLICIT
+1. Go to AWS Console / IAM / Roles / admin role you created, copy ARN
+1. Paste role ARN into lambda-config.js
+1. Run `gulp lambda:deploy`
+1. Go to AWS Console / Lambda / Functions and click the name of the function as configured in lambda-config.js
+1. Under "Add triggers" click `Alexa Skills Kit`
+1. Under "Configure triggers" and "Skill ID verification", click `Disable`
+1. Click `Add`
+1. Click `Save` at the top right
+1. Hit `Command-R` to reload the page
+1. In the top "Designer" box, you should see a box for "Alexa Skills Kit"
+1. On the top next to "Text" click `Select a test event...` then `Configure test events`
+1. Under "Event template" select `Amazon Alexa Start Session`.  You can type "Alexa" into the search box if it helps to narrow down the list to find that one.
+1. Under "Event name" enter `AlexaStart` or `AlexaStartSession` (it doesn't allow spaces)
+1. Hit `Create`
+1. Hit the `Test` button near the top right
+1. Click `Details` in the green box.  You should see output including `<speak>Hi there.  Ask me to tell a joke!\</speak>`  That shows that the Lambda itself is working, though it's not yet connected to Alexa.
+
