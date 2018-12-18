@@ -1,6 +1,9 @@
-# Setup
+ Build and run your first Lambda function
+* **Goal:** To set up all your development tools, most of the needed accounts, and build, upload, and run your first Lambda.
+* **Time Frame:** This part of the tutorial typically takes several hours.  There is a lot of first-time setup!
+* **Afterward:** The next step is to set up the Alexa side of things to call your Lambda, then test your skill from Alexa.
 
-## Local Machine Setup
+## Part 1 of 4: Local Machine Setup
 1. To run Terminal, which you'll need for many of the rest of these commands:
     1. Hit Command-Space and start typing `Terminal` and click `Terminal` when you see it in the list (or you can hit Enter if it's the first entry)
     1. When it opens a Terminal window, you can type `echo "Hello"` and then Enter to make sure it's working
@@ -40,7 +43,7 @@
         * This may take some time, especially if you're on an older version of macOS
     1. Run `aws` from Terminal and make sure it doesn't complain that the command wasn't found
 
-## AWS Account Setup
+## Part 2 of 4: AWS Account Setup
 1. Google for `AWS Console` and go there
 1. Click `Create a free account`
 1. Complete the account setup.  You will need an **e-mail address**, **credit card**, and working **cell phone** to receive a call
@@ -73,7 +76,7 @@
     1. Click `Next: Tags` then `Next: Review`
     1. Enter `AlexaLambda` for the Role Name and then hit `Create role`
 
-## Project Setup
+## Part 3 of 4: Project Setup
 1. Copy the initial code from GitHub down to your machine.
     1. In Terminal, create a directory to hold your coding projects.  I recommend calling it `dev` because it's shorter to type than `development` or `code` or whatever, but you can pick the name you like.  Run e.g. `mkdir dev` (mkdir creates a directory)
     1. Go to the new directory with `cd dev` (cd is "change directory")
@@ -106,7 +109,7 @@
     1. If you had to run a `git pull` first, then run `git push` again to make sure you have the code sent up.
     1. To double-check, look in your Web browser at https://github.com/ammulder/FamilyCoding/tree/master/alexa-jokes and then click the link with your name and see if the five new files are there.
 
-## First Lambda
+## Part 4 of 4: Customize and run your first Lambda in AWS
 1. Go to Visual Studio Code (or open it if it's not running)
 1. Open the project:
     1. Hit `Open folder...` in blue text
@@ -159,16 +162,10 @@
     1. Hit the `Test` button near the top right
     1. Click `Details` in the green box.  You should see output including `<speak>Hi there.  Ask me to tell a joke!\</speak>`  That shows that the Lambda itself is working, though it's not yet connected to Alexa.
 
-## Set up Alexa
+## Set up Alexa 
 
-1. First, create an Amazon developer account (for reasons unknown, this is separate from your AWS account that we created before):
-    1. In your browser, go to http://developer.amazon.com/
-    1. Click `Sign In` on the top right
-    1. If you already have a regular Amazon account, try signing in with that.  If you don't, click `Create your Amazon Developer account`
-    1. For new accounts, enter your name, e-mail address, and a good password.  For convenience, it may be best to use the same e-mail address you used for your AWS account (including any dots in the name).  It is not required, though.  Then hit `Continue`.
-    1. *Since I already have an account, I need to document this when one of you goes through it.*  Complete the rest of the Amazon Developer account setup, and if you're not signed in when that's done, sign in like above
-1. Next, create an Alexa skill (TODO)
-1. Configure the Alexa skill using the sample content in samples/ (TODO)
-1. Point the Alexa skill to your Lambda (TODO)
-1. Test the Alexa skill from the Alexa console (TODO)
-1. If you have an Echo or other Alexa device, invite the Amazon
+Congratulations!  Your Mac is set up for development, and your Lambda function is working!
+
+Next, we'll [Build your first Alexa skill](tutorial2.md), which includes configuring the skill, pointing it to your existing Lambda function, and testing it to make sure it's working.
+
+Later, we'll work with the code of the skill to change it around and add more features.
