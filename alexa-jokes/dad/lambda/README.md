@@ -84,7 +84,7 @@
 1. Download and install the libraries you need to work with this code
     1. Make sure you're in the directory named after you, within the `family/alexa-jokes` project.  Remember, you can use `pwd` to check.
     1. Go one step farther into the `lambda` directory (e.g. `cd l[TAB] [ENTER]`)
-    1. Run `nvm use` to set the version of Node you want to work with.  It should say `Found ... with version <lts/carbon>` and then `Now using node v8.11.2 (nom v5.6.0)` or something similar.
+    1. Run `nvm use` to set the version of Node you want to work with.  It should say `Found ... with version <lts/carbon>` and then `Now using node v8.11.2 (npm v5.6.0)` or something similar.
         * NOTE: this only worked because the initial code you copied included `.nvmrc` with the version of node listed that you should use.  We picked `lts/carbon` which refers to the 8.x Long-Term-Support version of Node, and best matches what the Lambda will run in when sent to AWS.  Remember, we previously ran `nvm install lts/carbon` to make sure we had that version installed on our machine.
     1. Run `npm install` to download the libraries we need, and the libraries THEY need, and then libraries THEY need... it will take a minute.  There will be WARN messages... ignore them for now.
         * NOTE: this only worked because the initial code you copied included a `package.json` file listing the libraries we need.  For future projects, you might need to start with `npm init` to create a `package.json` file, and `npm install --save ...` to install libraries and add them to the list in package.json... but I've done that much for you.
